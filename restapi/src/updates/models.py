@@ -13,3 +13,4 @@ class Update(models.Model):
 
     def __str__(self):
         return self.content or ""
+

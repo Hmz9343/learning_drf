@@ -16,7 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from updates.views import json_get_example, jsonCBV, jsonCBV2;
+from updates.views import (
+            json_get_example,
+            jsonCBV,
+            jsonCBV2,
+            SerializeDetailView,
+            SerializedListView
+    )
 
 
 urlpatterns = [
@@ -24,5 +30,6 @@ urlpatterns = [
     url(r'^json/example/',json_get_example),
     url(r'^json/cbv2',jsonCBV2.as_view()),
     url(r'^json/cbv/',jsonCBV.as_view()),
-
+    url(r'^serialized/data/',SerializeDetailView.as_view()),
+    url(r'^serializedlist/data',SerializedListView.as_view()),
 ]

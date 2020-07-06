@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
+from django.conf.urls import include, url
 from updates.views import (
             json_get_example,
             jsonCBV,
@@ -28,8 +28,9 @@ from updates.views import (
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
     url(r'^json/example/',json_get_example),
-    url(r'^json/cbv2',jsonCBV2.as_view()),
-    url(r'^json/cbv/',jsonCBV.as_view()),
-    url(r'^serialized/data/',SerializeDetailView.as_view()),
-    url(r'^serializedlist/data',SerializedListView.as_view()),
+    url(r'^api/updates/',include('updates.api.urls'))
+    #url(r'^json/cbv2',jsonCBV2.as_view()),
+    #url(r'^json/cbv/',jsonCBV.as_view()),
+    #url(r'^serialized/data/',SerializeDetailView.as_view()),
+    #url(r'^serializedlist/data',SerializedListView.as_view()),
 ]

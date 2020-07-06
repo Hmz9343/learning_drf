@@ -40,15 +40,11 @@ class jsonCBV(View):
 
 class SerializeDetailView(View):
     def get(self,request,*args,**kwargs):
-        obj = Update.objects.get(id=1)
-        data=serialize("json",[obj,],fields=('user','content'))
-        return HttpResponse(data,content_type='application/json')
+        json_data=Update.objects.get(id=1).serialize();
+        return HttpResponse(json_data,content_type='application/json')
 
 class SerializedListView(View):
     def get(self,request,*args,**kwargs):
-        obj=Update.objects.all();
-        data=serialize("json",obj,fields=('user','content'))
-        print(data)
-        #json_data=json.dumps(data)
+        data=Update.objects.all().serialize()
         return HttpResponse(data,content_type='application/json')
 

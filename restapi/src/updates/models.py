@@ -10,9 +10,6 @@ class UpdateQuerySet(models.QuerySet):
     def serialize(self):
         obj=self
         json_data=serialize('json',obj,fields=('user','content','image'))
-        dic=json.loads(json_data)
-        print(dic)
-        json_data=json.dumps(dic[0]['fields'])
         return json_data
 
 class UpdateManager(models.Manager):
